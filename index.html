@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Повестка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>ПОВЕСТКА №23-Ф</h1>
+
+        <p>
+            В соответствии с приказом №23-Ф. Вам необходимо явиться
+            для прохождения обязательной процедуры.
+        </p>
+
+        <p>
+            Дата явки и место проведения процедуры<br>
+            будут направлены вам отдельным уведомлением<br>
+            после подтверждения получения повестки.
+        </p>
+        <input type="text" id="nameInput" placeholder="Введите ФИО">
+
+        <button onclick="checkUser()">Подтвердить получение</button>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        function saveName() {
+            const name = document.getElementById("nameInput").value.trim();
+
+            if (name === "") {
+                alert("Введите ФИО");
+                return;
+            }
+
+            localStorage.setItem("soldierName", name);
+            window.location.href = "reveal.html";
+        }
+    </script>
+
+</body>
+
+</html>
