@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Статус обработки</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            font-family: 'Courier New', monospace;
+            color: #0f0;
+            overflow: hidden;
+        }
+
+        .screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: 1s;
+        }
+
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: rgba(0, 255, 0, 0.6);
+            animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        .status {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .stamp {
+            font-size: 60px;
+            color: red;
+            transform: scale(0);
+            transition: 0.4s ease;
+        }
+
+        .reveal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            opacity: 0;
+            transition: 1s;
+        }
+
+        .invite {
+            font-size: 26px;
+            margin-top: 20px;
+        }
+
+        .profile-btn {
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: white;
+            color: #2a5298;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 6px;
+            display: none;
+            /* появится позже */
+        }
+
+        .profile-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="screen" id="screen1">
+        <div class="scan-line"></div>
+        <h2>Проверка данных...</h2>
+        <div class="status" id="statusText">Подключение к базе</div>
+    </div>
+
+    <!-- Экран 2 -->
+    <div class="screen" id="screen2" style="display:none;">
+        <div class="stamp" id="stamp">МОБИЛИЗОВАН</div>
+    </div>
+
+    <!-- Экран 3 -->
+    <div class="reveal" id="screen3">
+        <h1>🎉 С ДНЁМ ЗАЩИТНИКА ОТЕЧЕСТВА 🎉</h1>
+        <div class="invite" id="inviteText"></div>
+
+        <button onclick="window.location.href='index.html'">
+            Вернуться
+        </button>
+
+        <button onclick="goProfile()">
+            Открыть личное дело →
+        </button>
+
+    </div>
+
+
+
+    <script>
+        const name = localStorage.getItem("soldierName") || "Боец";
+
+        const status = document.getElementById("statusText");
+        const stamp = document.getElementById("stamp");
+        const profileBtn = document.getElementById("profileBtn");
+
+        setTimeout(() => status.innerText = "Поиск записи...", 1000);
+        setTimeout(() => status.innerText = "Запись найдена", 2000);
+        setTimeout(() => status.innerText = "Статус: Призыв активен", 3000);
+
+        setTimeout(() => {
+            document.getElementById("screen1").style.display = "none";
+            document.getElementById("screen2").style.display = "flex";
+            setTimeout(() => stamp.style.transform = "scale(1)", 200);
+        }, 4000);
+
+        setTimeout(() => {
+            document.getElementById("screen2").style.display = "none";
+            document.getElementById("screen3").style.opacity = "1";
+
+            document.getElementById("inviteText").innerHTML =
+                `${name}, ты официально приглашён на мероприятие Hunters!<br><br>
+             📍 Место: Atrium <br>
+             🕖 Время: 19:00<br><br>
+             Будем ждать тебя!`;
+
+            profileBtn.style.display = "inline-block"; // показываем кнопку
+        }, 6000);
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
