@@ -1,0 +1,46 @@
+/* ===== ПРЕМИУМ ФОН HUNTERS ===== */
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0b2d1f;
+    /* темно-зеленый как раньше */
+    font-family: 'Courier New', monospace;
+}
+
+
+.card {
+    background: #d9cdb3;
+    padding: 40px;
+    border-radius: 20px;
+    width: 350px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 22px;
+    background: white;
+    color: #2a5298;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 6px;
+    width: auto;
+    min-width: 180px;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
