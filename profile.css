@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-card {
+    background: white;
+    width: 380px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+}
+
+.profile-card img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.profile-card h1 {
+    margin: 10px 0;
+    font-size: 24px;
+    color: #1e3c72;
+}
+
+.profile-card p {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #444;
+}
+
+.back-btn {
+    margin-top: 25px;
+    padding: 10px 20px;
+    border: none;
+    background: #1e3c72;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: #16305d;
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#profileWish {
+    margin-top: 12px;
+    font-size: 14px;
+    opacity: 0.85;
+    font-style: italic;
+}
